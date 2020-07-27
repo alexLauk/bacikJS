@@ -24,45 +24,45 @@
 
 // 1. Реализовать методы массива
 const map = (arr, callback, arg) => {
-    let results = [];
-    for (let i = 0; i < arr.length; i++) {
-      results.push(callback.call(arg, arr[i], i, arr));
-    }
-    return results;
-  };
+  let results = [];
+  for (let i = 0; i < arr.length; i++) {
+    results.push(callback.call(arg, arr[i], i, arr));
+  }
+  return results;
+};
 
 const filter = (arr, callback, arg) => {
-    let results = [];
-    for (i = 0; i < arr.length; i++) {
-      if (callback.call(arg, arr[i], i, arr)) {
-        results.push(arr[i]);
-      }
+  let results = [];
+  for (i = 0; i < arr.length; i++) {
+    if (callback.call(arg, arr[i], i, arr)) {
+      results.push(arr[i]);
     }
-    return results;
-  };
+  }
+  return results;
+};
 
 const some = (arr, callback, arg) => {
-    for (let i = 0; i < arr.length; i++) {
-      if (callback.call(arg, arr[i], i, arr)){
-          return true
-      }
+  for (let i = 0; i < arr.length; i++) {
+    if (callback.call(arg, arr[i], i, arr)) {
+      return true
     }
-    return false
-  };
+  }
+  return false
+};
 
 const every = (arr, callback, arg) => {
-    for (let i = 0; i < arr.length; i++) {
-      if (!callback.call(arg, arr[i], i, arr)){
-          return false
-      }
+  for (let i = 0; i < arr.length; i++) {
+    if (!callback.call(arg, arr[i], i, arr)) {
+      return false
     }
-    return true
-  };
+  }
+  return true
+};
 
 const reduce = (arr, callback, start) => {
-    let result = start;
-    for (let i = 0; i < arr.length; i++) {
-      result = callback.call(null, result, arr[i], i, arr);
-    }
-    return result;
-  };
+  let result = start;
+  for (let i = 0; i < arr.length; i++) {
+    result = callback.call(null, result, arr[i], i, arr);
+  }
+  return result;
+};

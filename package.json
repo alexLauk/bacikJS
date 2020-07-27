@@ -1,0 +1,23 @@
+{
+  "name": "basicjavascriptbypb",
+  "version": "1.0.0",
+  "description": "bacic JS",
+  "main": "homeWork_2.js",
+  "dependencies": {
+    "eslint": "^7.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexLauk/basicJavaScriptByPB.git"
+  },
+  "author": "Alex Romanko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexLauk/basicJavaScriptByPB/issues"
+  },
+  "homepage": "https://github.com/alexLauk/basicJavaScriptByPB#readme"
+}
