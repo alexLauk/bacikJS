@@ -281,7 +281,7 @@ class Card {
 
   static find(id) {
     const card = cards.find(card => card.id === id)
-    
+
     return card ? new Card(card) : undefined
   }
 
