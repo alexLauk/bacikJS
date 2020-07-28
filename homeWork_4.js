@@ -65,5 +65,5 @@ class Clock {
 
 // use class
 let clock = new Clock();
-clock.run();
-clock.stop();
+clock.run;
+clock.stop;
