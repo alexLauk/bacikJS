@@ -19,39 +19,49 @@
 class Clock {
     constructor(format = 'DD.MM.YYYY hh:mm:ss') {
       this.format = format
+      this.zero = '0'
+      this.timer = null
+      this.output = null
     }
 
-    display() {
-          const date = new Date()
+    get display() {
+      const date = new Date()
 
-          const obj = {
-            year : date.getFullYear(),
-            month : (`0${date.getMonth()}`).slice(-2),
-            day : (`0${date.getDate()}`).slice(-2),
-            hour : (`0${date.getHours()}`).slice(-2),
-            min : (`0${date.getMinutes()}`).slice(-2),
-            sec : (`0${date.getSeconds()}`).slice(-2)
-          }
+      const arr = [
+        {value: date.getFullYear(), reg: /Y{1,4}/},
+        {value: (this.zero + date.getMonth()).slice(-2), reg: /M{1,2}/},
+        {value: (this.zero + date.getDate()).slice(-2), reg: /D{1,2}/},
+        {value: date.getHours(), reg: /h{1,2}/},
+        {value: (this.zero + date.getMinutes()).slice(-2), reg: /m{1,2}/},
+        {value: (this.zero + date.getSeconds()).slice(-2), reg: /s{1,2}/}
+    ]
 
-          const output = Object.values(obj).reduce((str, current)=> str.replace(/([Y]{1,4})|([MD]{1,2})|([hms]{1,2})/, current), this.format)
+      this.output = arr.reduce((str, item, idx) => str.replace(arr[idx].reg, item.value), this.format)
 
-          console.log(output);
-      }
+      return console.log(this.output);
+    }
 
-    formatTo(format) {
+    get stop() {
+      return clearInterval(this.timer);
+    }
+
+    get run() {
+        this.timer = setInterval(() => this.display, 1000);
+    }
+
+    set run(format) {
       this.format = format
-      this.display()
+      this.run
     }
 
-    stop() {
-      clearInterval(this.timer);
+    get formatTo() {
     }
 
-    run() {
-      this.display();
-      this.timer = setInterval(() => this.display(), 1000);
+    set formatTo(format) {
+      this.format = format
     }
-}
+
+  }
 
 // use class
 let clock = new Clock();
